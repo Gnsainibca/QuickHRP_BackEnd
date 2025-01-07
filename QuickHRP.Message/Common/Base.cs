@@ -14,8 +14,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
-        public bool IsActive { get; set; } = true;
+        public bool Inactive { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; }
     }
 }

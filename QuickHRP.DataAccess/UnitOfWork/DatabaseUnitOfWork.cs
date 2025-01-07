@@ -9,9 +9,15 @@ using QuickHRP.Utility;
 
 namespace QuickHRP.DataAccess.UnitOfWork
 {
-    public class DatabaseUnitOfWork(QuickHRPDbContext context) : IDatabaseUnitOfWork
+    public class DatabaseUnitOfWork : IDatabaseUnitOfWork
     {
-        private readonly QuickHRPDbContext _context = context;
+        private readonly QuickHRPDbContext _context;
+
+        public DatabaseUnitOfWork(QuickHRPDbContext context)
+        {
+            _context = context;
+        }
+
         private readonly Dictionary<Type, object> repositories = [];
 
         public IRepository<T> Repository<T>() where T : class
@@ -200,23 +206,23 @@ namespace QuickHRP.DataAccess.UnitOfWork
 
         private bool disposed = false;
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            disposed = true;
-        }
+        //protected virtual void Dispose(bool disposing)
+        //{
+        //    if (!disposed)
+        //    {
+        //        if (disposing)
+        //        {
+        //            _context.Dispose();
+        //        }
+        //    }
+        //    disposed = true;
+        //}
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        //public void Dispose()
+        //{
+        //    Dispose(true);
+        //    GC.SuppressFinalize(this);
+        //}
     }
 }
 

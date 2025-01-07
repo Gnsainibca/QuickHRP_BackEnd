@@ -5,7 +5,7 @@ using QuickHRP.DataAccess.SQL;
 
 namespace QuickHRP.DataAccess.Contract
 {
-    public interface IDatabaseUnitOfWork : IDisposable
+    public interface IDatabaseUnitOfWork // : IDisposable
     {
         IRepository<T> Repository<T>() where T : class;
 

@@ -1,6 +1,6 @@
 ﻿namespace QuickHRP.Message.Master
 {
-    public class MaterDataViewModel
+    public class MasterDataViewModel
     {
         public int Id { get; set; }
         public int TypeId { get; set; }

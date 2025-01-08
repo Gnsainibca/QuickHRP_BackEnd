@@ -1,21 +1,18 @@
-﻿using AutoMapper;
-using QuickHRP.DataAccess.Contract;
+﻿using QuickHRP.DataAccess.Contract;
 using QuickHRP.Entities;
-using QuickHRP.Message.Master;
 
 namespace QuickHRP.DataAccess.Service
 {
-    public class MasterDataService(IDatabaseUnitOfWork unitOfWork, IMapper mapper) : IMasterDataService
+    public class MasterDataService(IDatabaseUnitOfWork unitOfWork) : IMasterDataService
     {
         /// <summary>
         /// Get all the master data
         /// </summary>
         /// <param name="hospitalId"></param>
         /// <returns></returns>
-        public IList<MaterDataDTO> GetMaterData(int hospitalId)
+        public IList<MasterData> GetMaterData(int hospitalId)
         {
-            var masterData = unitOfWork.Repository<MasterData>().All().Where(masterData => masterData.HospitalId == hospitalId);
-            return mapper.Map<IList<MaterDataDTO>>(masterData);
+            return unitOfWork.Repository<MasterData>().All().Where(masterData => masterData.HospitalId == hospitalId).ToList();
         }
 
         /// <summary>
@@ -23,10 +20,9 @@ namespace QuickHRP.DataAccess.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public MaterDataDTO GetMaterDataById(int id)
+        public MasterData GetMaterDataById(int id)
         {
-            var masterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
-            return mapper.Map<MaterDataDTO>(masterData);
+            return unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
         }
 
         /// <summary>
@@ -34,10 +30,9 @@ namespace QuickHRP.DataAccess.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> AddMaterData(MaterDataDTO materDataDto)
+        public async Task<bool> AddMaterData(MasterData masterData)
         {
-            var materData = mapper.Map<MasterData>(materDataDto);
-            unitOfWork.Repository<MasterData>().Insert(materData);
+            unitOfWork.Repository<MasterData>().Insert(masterData);
             return Convert.ToBoolean(await unitOfWork.SaveChangesAsync());
         }
 
@@ -46,7 +41,7 @@ namespace QuickHRP.DataAccess.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateMaterData(MaterDataDTO materData)
+        public async Task<bool> UpdateMaterData(MasterData materData)
         {
             var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == materData.Id);
             dbMasterData.ParentId = materData.ParentId;
@@ -63,12 +58,12 @@ namespace QuickHRP.DataAccess.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteMaterData(int id, int modifiedBy)
+        public async Task<bool> DeleteMaterData(int id, int modifiedBy, DateTime modifiedOn)
         {
             var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
             dbMasterData.IsDeleted = true;
             dbMasterData.ModifiedBy = modifiedBy;
-            dbMasterData.ModifiedOn = DateTime.UtcNow;
+            dbMasterData.ModifiedOn = modifiedOn;
             unitOfWork.Repository<MasterData>().Update(dbMasterData);
             return Convert.ToBoolean(await unitOfWork.SaveChangesAsync());
         }
@@ -78,12 +73,12 @@ namespace QuickHRP.DataAccess.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> InactiveMaterData(int id, int modifiedBy)
+        public async Task<bool> InactiveMaterData(int id, int modifiedBy, DateTime modifiedOn)
         {
             var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
             dbMasterData.Inactive = true;
             dbMasterData.ModifiedBy = modifiedBy;
-            dbMasterData.ModifiedOn = DateTime.UtcNow;
+            dbMasterData.ModifiedOn = modifiedOn;
             unitOfWork.Repository<MasterData>().Update(dbMasterData);
             return Convert.ToBoolean(await unitOfWork.SaveChangesAsync());
         }

@@ -1,20 +1,19 @@
 ﻿using QuickHRP.Entities;
-using QuickHRP.Message.Master;
 
 namespace QuickHRP.DataAccess.Contract
 {
     public interface IMasterDataService
     {
-        IList<MaterDataDTO> GetMaterData(int hospitalId);
+        IList<MasterData> GetMaterData(int hospitalId);
 
-        MaterDataDTO GetMaterDataById(int id);
+        MasterData GetMaterDataById(int id);
 
-        Task<bool> AddMaterData(MaterDataDTO materData);
+        Task<bool> AddMaterData(MasterData materData);
 
-        Task<bool> UpdateMaterData(MaterDataDTO materData);
+        Task<bool> UpdateMaterData(MasterData materData);
 
-        Task<bool> DeleteMaterData(int id, int modifiedBy);
+        Task<bool> DeleteMaterData(int id, int modifiedBy, DateTime modifiedOn);
 
-        Task<bool> InactiveMaterData(int id, int modifiedBy);
+        Task<bool> InactiveMaterData(int id, int modifiedBy, DateTime modifiedOn);
     }
 }

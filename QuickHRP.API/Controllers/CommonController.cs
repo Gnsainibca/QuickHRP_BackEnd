@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuickHRP.BusinessService.Contract;
-using QuickHRP.Entities;
 using QuickHRP.Message.Master;
 
 namespace QuickHRP.API.Controllers
@@ -12,18 +11,18 @@ namespace QuickHRP.API.Controllers
     {
         [HttpGet]
         [Route("MaterData/GetAll")]
-        public IEnumerable<MaterDataViewModel> GetMasterData()
+        public IEnumerable<MasterDataViewModel> GetMasterData()
         {
             var masterData = masterService.GetMaterData();
-            return mapper.Map<IList<MaterDataViewModel>>(masterData);
+            return mapper.Map<IList<MasterDataViewModel>>(masterData);
         }
 
         [HttpGet]
         [Route("MasterData/Get/{id}")]
-        public MaterDataViewModel GetMaterDataById(int id)
+        public MasterDataViewModel GetMaterDataById(int id)
         {
             var masterData = masterService.GetMaterDataById(id);
-            return mapper.Map<MaterDataViewModel>(masterData);
+            return mapper.Map<MasterDataViewModel>(masterData);
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace QuickHRP.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("MaterData/Add")]
-        public async Task<bool> AddMaterData(MaterDataViewModel materData)
+        public async Task<bool> AddMaterData(MasterDataViewModel materData)
         {
             return await masterService.AddMaterData(materData);
         }
@@ -45,7 +44,7 @@ namespace QuickHRP.API.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("MaterData/Update/{id}")]
-        public async Task<bool> UpdateMaterData(int id, [FromBody] MaterDataViewModel materData)
+        public async Task<bool> UpdateMaterData(int id, [FromBody] MasterDataViewModel materData)
         {
             return await masterService.UpdateMaterData(id, materData);
         }

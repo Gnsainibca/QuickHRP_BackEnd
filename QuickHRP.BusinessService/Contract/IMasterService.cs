@@ -4,13 +4,13 @@ namespace QuickHRP.BusinessService.Contract
 {
     public interface IMasterService
     {
-        IList<MaterDataDTO> GetMaterData();
+        IList<MasterDataViewModel> GetMaterData();
 
-        MaterDataDTO GetMaterDataById(int id);
+        MasterDataViewModel GetMaterDataById(int id);
 
-        Task<bool> AddMaterData(MaterDataViewModel materData);
+        Task<bool> AddMaterData(MasterDataViewModel materData);
 
-        Task<bool> UpdateMaterData(int id, MaterDataViewModel materData);
+        Task<bool> UpdateMaterData(int id, MasterDataViewModel materData);
 
         Task<bool> DeleteMaterData(int id);
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using QuickHRP.Entities;
 using QuickHRP.Message.Master;
 
 namespace QuickHRP.BusinessService.Mapping
@@ -7,7 +8,7 @@ namespace QuickHRP.BusinessService.Mapping
     {
         public BusinessToExternalMappingProfile()
         {
-            CreateMap<MaterDataDTO, MaterDataViewModel>().ReverseMap();
+            CreateMap<MasterData, MasterDataViewModel>().ReverseMap();
         }
     }
 }

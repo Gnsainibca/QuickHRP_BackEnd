@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuickHRP.Core\QuickHRP.Core.csproj" />
     <ProjectReference Include="..\QuickHRP.DataAccess\QuickHRP.DataAccess.csproj" />
+    <ProjectReference Include="..\QuickHRP.MessageCore\QuickHRP.MessageCore.csproj" />
     <ProjectReference Include="..\QuickHRP.Message\QuickHRP.Message.csproj" />
   </ItemGroup>
 

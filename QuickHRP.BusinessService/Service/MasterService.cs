@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using QuickHRP.BusinessService.Contract;
+using QuickHRP.Core.Service;
 using QuickHRP.DataAccess.Contract;
 using QuickHRP.Entities;
 using QuickHRP.Message.Master;
+using QuickHRP.MessageCore;
 
 namespace QuickHRP.BusinessService.Service
 {
@@ -16,10 +18,11 @@ namespace QuickHRP.BusinessService.Service
         /// </summary>
         /// <param name="hospitalId"></param>
         /// <returns></returns>
-        public IList<MasterDataViewModel> GetMaterData()
+        public ServiceResponseOf<IList<MasterDataViewModel>> GetMaterData()
         {
             var masterDataList = masterDataService.GetMaterData(hospitalId);
-            return mapper.Map<IList<MasterDataViewModel>>(masterDataList);
+            var result = mapper.Map<IList<MasterDataViewModel>>(masterDataList);
+            return ResponseHelpers.GetServiceResponse(() => result, "Failed to get master data list");
         }
 
         /// <summary>
@@ -27,10 +30,11 @@ namespace QuickHRP.BusinessService.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public MasterDataViewModel GetMaterDataById(int id)
+        public ServiceResponseOf<MasterDataViewModel> GetMaterDataById(int id)
         {
             var masterData = masterDataService.GetMaterDataById(id);
-            return mapper.Map<MasterDataViewModel>(masterData);
+            var result = mapper.Map<MasterDataViewModel>(masterData);
+            return ResponseHelpers.GetServiceResponse(() => result, "Failed to get master data");
         }
 
         /// <summary>
@@ -38,7 +42,7 @@ namespace QuickHRP.BusinessService.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> AddMaterData(MasterDataViewModel materData)
+        public async Task<ServiceResponseOf<bool>> AddMaterData(MasterDataViewModel materData)
         {
             var masterData =  mapper.Map<MasterData>(materData);
             masterData.HospitalId = hospitalId;
@@ -46,7 +50,8 @@ namespace QuickHRP.BusinessService.Service
             masterData.CreatedOn = DateTime.UtcNow;
             masterData.Inactive = false;
             masterData.IsDeleted = false;
-            return await masterDataService.AddMaterData(masterData);
+            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.AddMaterData(masterData), "Failed to add master data");
+
         }
 
         /// <summary>
@@ -55,13 +60,13 @@ namespace QuickHRP.BusinessService.Service
         /// <param name="id"></param>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateMaterData(int id, MasterDataViewModel materData)
+        public async Task<ServiceResponseOf<bool>> UpdateMaterData(int id, MasterDataViewModel materData)
         {
             var masterData =  mapper.Map<MasterData>(materData);
             masterData.HospitalId = hospitalId;
             masterData.ModifiedBy = actionPerformedBy;
             masterData.ModifiedOn = DateTime.UtcNow;
-            return await masterDataService.UpdateMaterData(masterData);
+            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.UpdateMaterData(masterData), "Failed to add master data");
         }
 
         /// <summary>
@@ -69,9 +74,9 @@ namespace QuickHRP.BusinessService.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteMaterData(int id)
+        public async Task<ServiceResponseOf<bool>> DeleteMaterData(int id)
         {
-            return await masterDataService.DeleteMaterData(id, actionPerformedBy, DateTime.UtcNow);
+            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.DeleteMaterData(id, actionPerformedBy, DateTime.UtcNow), "Failed to delete master data");
         }
 
         /// <summary>
@@ -79,9 +84,9 @@ namespace QuickHRP.BusinessService.Service
         /// </summary>
         /// <param name="materData"></param>
         /// <returns></returns>
-        public async Task<bool> InactiveMaterData(int id)
+        public async Task<ServiceResponseOf<bool>> InactiveMaterData(int id)
         {
-            return await masterDataService.InactiveMaterData(id, actionPerformedBy, DateTime.UtcNow);
+            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.InactiveMaterData(id, actionPerformedBy, DateTime.UtcNow), "Failed to mark inactive master data");
         }
     }
 }

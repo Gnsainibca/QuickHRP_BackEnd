@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuickHRP.BusinessService\QuickHRP.BusinessService.csproj" />
+    <ProjectReference Include="..\QuickHRP.MessageCore\QuickHRP.MessageCore.csproj" />
     <ProjectReference Include="..\QuickHRP.Message\QuickHRP.Message.csproj" />
   </ItemGroup>
 

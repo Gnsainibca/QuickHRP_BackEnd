@@ -1,19 +1,20 @@
 ﻿using QuickHRP.Message.Master;
+using QuickHRP.MessageCore;
 
 namespace QuickHRP.BusinessService.Contract
 {
     public interface IMasterService
     {
-        IList<MasterDataViewModel> GetMaterData();
+        ServiceResponseOf<IList<MasterDataViewModel>> GetMaterData();
 
-        MasterDataViewModel GetMaterDataById(int id);
+        ServiceResponseOf<MasterDataViewModel> GetMaterDataById(int id);
 
-        Task<bool> AddMaterData(MasterDataViewModel materData);
+        Task<ServiceResponseOf<bool>> AddMaterData(MasterDataViewModel materData);
 
-        Task<bool> UpdateMaterData(int id, MasterDataViewModel materData);
+        Task<ServiceResponseOf<bool>> UpdateMaterData(int id, MasterDataViewModel materData);
 
-        Task<bool> DeleteMaterData(int id);
+        Task<ServiceResponseOf<bool>> DeleteMaterData(int id);
 
-        Task<bool> InactiveMaterData(int id);
+        Task<ServiceResponseOf<bool>> InactiveMaterData(int id);
     }
 }

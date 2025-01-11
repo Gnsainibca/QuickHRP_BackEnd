@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Appointment\" />
     <Folder Include="IPD\" />
     <Folder Include="FrontOffice\" />
     <Folder Include="Patient\" />
@@ -16,6 +15,10 @@
     <Folder Include="Radiology\" />
     <Folder Include="Pharmacy\" />
     <Folder Include="OPD\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
   </ItemGroup>
 
 </Project>

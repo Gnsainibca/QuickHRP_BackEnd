@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using QuickHRP.Entities.Hospital;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuickHRP.Entities.Common
 {
@@ -7,6 +8,8 @@ namespace QuickHRP.Entities.Common
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
+        [ForeignKey("HospitalId")]
+        public required virtual HospitalRegistration HospitalRegistration { get; set; }
         public required int HospitalId { get; set; }
 
         public required int CreatedBy { get; set; }

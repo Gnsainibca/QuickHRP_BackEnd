@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickHRP.DataAccess.SQL;
 
@@ -11,9 +12,11 @@ using QuickHRP.DataAccess.SQL;
 namespace QuickHRP.DataAccess.SQL.Migrations
 {
     [DbContext(typeof(QuickHRPDbContext))]
-    partial class QuickHRPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250111140801_addTableHospitalRegistration")]
+    partial class addTableHospitalRegistration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -66,6 +66,48 @@ INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
 SELECT 'Purpose', 100
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 100);
 
+--To insert record in Master Type Table for Operation Category
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Operation Category', 110
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110);
+
+--To insert record in Master Type Table for Medicine Group
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Group', 120
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120);
+
+--To insert record in Master Type Table for Medicine Company
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Company', 130
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130);
+
+--To insert record in Master Type Table for Medicine Unit
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Unit', 140
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140);
+
+--To insert record in Master Type Table for Doasage Duration
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Doasage Duration', 150
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150);
+
+--To insert record in Master Type Table for Doasage Interval
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Doasage Interval', 160
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160);
+
+--To insert record in Master Type Table for Medicine Category
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Medicine Category', 170
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170);
+
 --To insert data into mster marital status table
 
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
@@ -676,3 +718,495 @@ WHERE NOT EXISTS (
     WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 100)
       AND [Name] = 'Visit'
 );
+
+--To insert data into master operation category table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Urology', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Urology'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Thoracic Surgery', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Thoracic Surgery'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Plastic Surgery', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Plastic Surgery'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Orthopedic Surgery', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Orthopedic Surgery'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Ophthalmology', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Ophthalmology'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'Gynaecology', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'Gynaecology'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110), null, 'ENT and Oral Surgery', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110)
+      AND [Name] = 'ENT and Oral Surgery'
+);
+
+--To insert data into master medicine group table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120), null, 'HIPERIN', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120)
+      AND [Name] = 'HIPERIN'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120), null, 'Antigout agents', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120)
+      AND [Name] = 'Antigout agents'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120), null, 'Antiparasitics', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120)
+      AND [Name] = 'Antiparasitics'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120), null, 'Antimycobacterials', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120)
+      AND [Name] = 'Antimycobacterials'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120), null, 'Antibacterials', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120)
+      AND [Name] = 'Antibacterials'
+);
+
+
+--To insert data into master medicine company table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130), null, 'Medimax', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130)
+      AND [Name] = 'Medimax'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130), null, 'Lupin Limited', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130)
+      AND [Name] = 'Lupin Limited'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130), null, 'Biocon Limited', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130)
+      AND [Name] = 'Biocon Limited'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130), null, 'Alkem Laboratories', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130)
+      AND [Name] = 'Alkem Laboratories'
+);
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130), null, 'Johnson & Johnson', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130)
+      AND [Name] = 'Johnson & Johnson'
+);
+
+--To insert data into master medicine unit table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140), null, 'g/dl', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140)
+      AND [Name] = 'g/dl'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140), null, 'mg', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140)
+      AND [Name] = 'mg'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140), null, 'ml', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140)
+      AND [Name] = 'ml'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140), null, 'mm', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140)
+      AND [Name] = 'mm'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140), null, 'mg/mL', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140)
+      AND [Name] = 'mg/mL'
+);
+
+--To insert data into master medicine doasage duration table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, '1 Week', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = '1 Week'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, '2 Week', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = '2 Week'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, '1 Month', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = '1 Month'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, 'Afternoon', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = 'Afternoon'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, 'Morning', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = 'Morning'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, 'Evening', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = 'Evening'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150), null, 'Night', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150)
+      AND [Name] = 'Night'
+);
+
+--To insert data into master medicine doasage interval table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160), null, 'Only one a day', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160)
+      AND [Name] = 'Only one a day'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160), null, '2 times in a day', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160)
+      AND [Name] = '2 times in a day'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160), null, '3 times in a day', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160)
+      AND [Name] = '3 times in a day'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160), null, '4 times in a day', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160)
+      AND [Name] = '4 times in a day'
+);
+
+--To insert data into master medicine category table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Tablet', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Tablet'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Diaper', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Diaper'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Preparations', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Preparations'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Liquid', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Liquid'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Implants / Patches', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Implants / Patches'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Inhalers', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Inhalers'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Drops', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Drops'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Surgical', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 8   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Surgical'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Cream', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 9  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Cream'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Ointment', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 10 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Ointment'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Injection', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 11 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Injection'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Capsule', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 12   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Capsule'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId], [Name], [Description], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170), null, 'Syrup', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 13   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170)
+      AND [Name] = 'Syrup'
+);
+

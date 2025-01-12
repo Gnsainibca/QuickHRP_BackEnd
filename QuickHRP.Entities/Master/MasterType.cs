@@ -7,7 +7,7 @@ namespace QuickHRP.Entities.Master
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public required string Name { get; set; }
-        public byte BusinessKey { get; set; }
+        public int BusinessKey { get; set; }
 
         public required virtual ICollection<MasterData> MasterDataList { get; set; }
     }

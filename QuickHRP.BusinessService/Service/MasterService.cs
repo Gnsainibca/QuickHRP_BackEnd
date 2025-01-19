@@ -68,6 +68,7 @@ namespace QuickHRP.BusinessService.Service
         public async Task<ServiceResponseOf<bool>> UpdateMaterData(int id, MasterDataViewModel materData)
         {
             var masterData = mapper.Map<MasterData>(materData);
+            masterData.Id = id;
             masterData.ModifiedBy = actionPerformedBy;
             masterData.ModifiedOn = DateTime.UtcNow;
 

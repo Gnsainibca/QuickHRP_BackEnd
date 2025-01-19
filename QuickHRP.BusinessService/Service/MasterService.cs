@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using QuickHRP.BusinessService.Contract;
+using QuickHRP.Core.Caching;
 using QuickHRP.Core.Service;
 using QuickHRP.DataAccess.Contract;
 using QuickHRP.Entities;
@@ -8,10 +9,12 @@ using QuickHRP.MessageCore;
 
 namespace QuickHRP.BusinessService.Service
 {
-    public class MasterService (IMasterDataService masterDataService, IMapper mapper) : IMasterService
+    public class MasterService(IMasterDataService masterDataService, IMapper mapper) : IMasterService
     {
         private const int hospitalId = 1;
         private const int actionPerformedBy = 1;
+        private static readonly SimpleCache _cache = new();
+        private static readonly string key = $"MasterData_HOSPID_{hospitalId}";
 
         /// <summary>
         /// Get all the master data
@@ -20,9 +23,7 @@ namespace QuickHRP.BusinessService.Service
         /// <returns></returns>
         public ServiceResponseOf<IList<MasterDataViewModel>> GetMaterData()
         {
-            var masterDataList = masterDataService.GetMaterData(hospitalId);
-            var result = mapper.Map<IList<MasterDataViewModel>>(masterDataList);
-            return ResponseHelpers.GetServiceResponse(() => result, "Failed to get master data list");
+            return ResponseHelpers.GetServiceResponse(() => GetCachedMasterData(), "Failed to get master data list");
         }
 
         /// <summary>
@@ -32,8 +33,7 @@ namespace QuickHRP.BusinessService.Service
         /// <returns></returns>
         public ServiceResponseOf<MasterDataViewModel> GetMaterDataById(int id)
         {
-            var masterData = masterDataService.GetMaterDataById(id);
-            var result = mapper.Map<MasterDataViewModel>(masterData);
+            var result = GetCachedMasterData().First(x => x.Id == id);
             return ResponseHelpers.GetServiceResponse(() => result, "Failed to get master data");
         }
 
@@ -44,14 +44,19 @@ namespace QuickHRP.BusinessService.Service
         /// <returns></returns>
         public async Task<ServiceResponseOf<bool>> AddMaterData(MasterDataViewModel materData)
         {
-            var masterData =  mapper.Map<MasterData>(materData);
+            var masterData = mapper.Map<MasterData>(materData);
             masterData.HospitalId = hospitalId;
             masterData.CreatedBy = actionPerformedBy;
             masterData.CreatedOn = DateTime.UtcNow;
             masterData.Inactive = false;
             masterData.IsDeleted = false;
-            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.AddMaterData(masterData), "Failed to add master data");
-
+            var hasAdded = await masterDataService.AddMaterData(masterData);
+            if (hasAdded)
+            {
+                _cache.Remove(key);
+                _ = Task.Run(GetCachedMasterData);
+            }
+            return await ResponseHelpers.GetServiceResponseAsync(() => Task.FromResult(hasAdded), "Failed to add master data");
         }
 
         /// <summary>
@@ -62,11 +67,17 @@ namespace QuickHRP.BusinessService.Service
         /// <returns></returns>
         public async Task<ServiceResponseOf<bool>> UpdateMaterData(int id, MasterDataViewModel materData)
         {
-            var masterData =  mapper.Map<MasterData>(materData);
-            masterData.HospitalId = hospitalId;
+            var masterData = mapper.Map<MasterData>(materData);
             masterData.ModifiedBy = actionPerformedBy;
             masterData.ModifiedOn = DateTime.UtcNow;
-            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.UpdateMaterData(masterData), "Failed to add master data");
+
+            var hasUpdated = await masterDataService.UpdateMaterData(masterData);
+            if (hasUpdated)
+            {
+                _cache.Remove(key);
+                _ = Task.Run(GetCachedMasterData);
+            }
+            return await ResponseHelpers.GetServiceResponseAsync(() => Task.FromResult(hasUpdated), "Failed to update master data");
         }
 
         /// <summary>
@@ -76,7 +87,13 @@ namespace QuickHRP.BusinessService.Service
         /// <returns></returns>
         public async Task<ServiceResponseOf<bool>> DeleteMaterData(int id)
         {
-            return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.DeleteMaterData(id, actionPerformedBy, DateTime.UtcNow), "Failed to delete master data");
+            var hasDeleted = await masterDataService.DeleteMaterData(id, actionPerformedBy, DateTime.UtcNow);
+            if (hasDeleted)
+            {
+                _cache.Remove(key);
+                _ = Task.Run(GetCachedMasterData);
+            }
+            return await ResponseHelpers.GetServiceResponseAsync(() => Task.FromResult(hasDeleted), "Failed to delete master data");
         }
 
         /// <summary>
@@ -87,6 +104,15 @@ namespace QuickHRP.BusinessService.Service
         public async Task<ServiceResponseOf<bool>> InactiveMaterData(int id)
         {
             return await ResponseHelpers.GetServiceResponseAsync(() => masterDataService.InactiveMaterData(id, actionPerformedBy, DateTime.UtcNow), "Failed to mark inactive master data");
+        }
+
+        private IList<MasterDataViewModel> GetCachedMasterData()
+        {
+            return _cache.Get(key, fun =>
+            {
+                var result = masterDataService.GetMaterData(hospitalId);
+                return mapper.Map<IList<MasterDataViewModel>>(result);
+            }, 30, 30);
         }
     }
 }

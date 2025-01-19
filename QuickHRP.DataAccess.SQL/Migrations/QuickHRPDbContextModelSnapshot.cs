@@ -118,7 +118,16 @@ namespace QuickHRP.DataAccess.SQL.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Field1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field4")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HospitalId")
@@ -136,14 +145,13 @@ namespace QuickHRP.DataAccess.SQL.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderNumber")
+                        .HasColumnType("int");
 
-                    b.Property<byte>("OrderNumber")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("ParentId1")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("ParentId")
+                    b.Property<int?>("ParentId2")
                         .HasColumnType("int");
 
                     b.Property<int>("TypeId")

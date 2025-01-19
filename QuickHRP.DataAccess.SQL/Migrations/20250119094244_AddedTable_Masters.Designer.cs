@@ -12,8 +12,8 @@ using QuickHRP.DataAccess.SQL;
 namespace QuickHRP.DataAccess.SQL.Migrations
 {
     [DbContext(typeof(QuickHRPDbContext))]
-    [Migration("20250111140801_addTableHospitalRegistration")]
-    partial class addTableHospitalRegistration
+    [Migration("20250119094244_AddedTable_Masters")]
+    partial class AddedTable_Masters
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,8 +95,8 @@ namespace QuickHRP.DataAccess.SQL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte>("BusinessKey")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("BusinessKey")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -121,7 +121,16 @@ namespace QuickHRP.DataAccess.SQL.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Field1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Field4")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HospitalId")
@@ -139,14 +148,13 @@ namespace QuickHRP.DataAccess.SQL.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderNumber")
+                        .HasColumnType("int");
 
-                    b.Property<byte>("OrderNumber")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("ParentId1")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("ParentId")
+                    b.Property<int?>("ParentId2")
                         .HasColumnType("int");
 
                     b.Property<int>("TypeId")

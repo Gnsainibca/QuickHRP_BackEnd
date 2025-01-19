@@ -12,17 +12,11 @@ namespace QuickHRP.DataAccess.Service
         /// <returns></returns>
         public IList<MasterData> GetMaterData(int hospitalId)
         {
-            return unitOfWork.Repository<MasterData>().All().Where(masterData => masterData.HospitalId == hospitalId).ToList();
-        }
-
-        /// <summary>
-        /// Get Mater Data By Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public MasterData GetMaterDataById(int id)
-        {
-            return unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
+            return [.. unitOfWork.Repository<MasterData>().All()
+                .Where(x => x.HospitalId == hospitalId && !x.IsDeleted)
+                .OrderBy(x => x.TypeId)
+                .ThenBy(x => x.OrderNumber)
+                .ThenBy(x => x.MasterType.Name)];
         }
 
         /// <summary>
@@ -43,10 +37,14 @@ namespace QuickHRP.DataAccess.Service
         /// <returns></returns>
         public async Task<bool> UpdateMaterData(MasterData materData)
         {
-            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == materData.Id);
-            dbMasterData.ParentId = materData.ParentId;
-            dbMasterData.Name = materData.Name;
-            dbMasterData.Description = materData.Name;
+            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(x => x.Id == materData.Id);
+            dbMasterData.ParentId1 = materData.ParentId1;
+            dbMasterData.ParentId2 = materData.ParentId2;
+            dbMasterData.Field1 = materData.Field1;
+            dbMasterData.Field2 = materData.Field2;
+            dbMasterData.Field3 = materData.Field3;
+            dbMasterData.Field4 = materData.Field4;
+            dbMasterData.OrderNumber = materData.OrderNumber;
             dbMasterData.ModifiedBy = materData.ModifiedBy;
             dbMasterData.ModifiedOn = materData.ModifiedOn;
             unitOfWork.Repository<MasterData>().Update(dbMasterData);
@@ -60,7 +58,7 @@ namespace QuickHRP.DataAccess.Service
         /// <returns></returns>
         public async Task<bool> DeleteMaterData(int id, int modifiedBy, DateTime modifiedOn)
         {
-            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
+            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(x => x.Id == id);
             dbMasterData.IsDeleted = true;
             dbMasterData.ModifiedBy = modifiedBy;
             dbMasterData.ModifiedOn = modifiedOn;
@@ -75,7 +73,7 @@ namespace QuickHRP.DataAccess.Service
         /// <returns></returns>
         public async Task<bool> InactiveMaterData(int id, int modifiedBy, DateTime modifiedOn)
         {
-            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(masterData => masterData.Id == id);
+            var dbMasterData = unitOfWork.Repository<MasterData>().GetSingleOrDefault(x => x.Id == id);
             dbMasterData.Inactive = true;
             dbMasterData.ModifiedBy = modifiedBy;
             dbMasterData.ModifiedOn = modifiedOn;

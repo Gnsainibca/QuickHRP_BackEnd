@@ -6,8 +6,6 @@ namespace QuickHRP.DataAccess.Contract
     {
         IList<MasterData> GetMaterData(int hospitalId);
 
-        MasterData GetMaterDataById(int id);
-
         Task<bool> AddMaterData(MasterData materData);
 
         Task<bool> UpdateMaterData(MasterData materData);

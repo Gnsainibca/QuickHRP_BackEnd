@@ -6,7 +6,7 @@ namespace QuickHRP.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommonController (IMasterService masterService) : ControllerBase
+    public class MasterController (IMasterService masterService) : ControllerBase
     {
         [HttpGet]
         [Route("MaterData/GetAll")]

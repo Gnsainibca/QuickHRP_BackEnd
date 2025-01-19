@@ -1,4 +1,6 @@
-﻿namespace QuickHRP.Message.Master
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace QuickHRP.Message.Master
 {
     public class MasterDataViewModel
     {
@@ -6,7 +8,9 @@
         public int TypeId { get; set; }
         public int? ParentId1 { get; set; }
         public int? ParentId2 { get; set; }
-        public string? Field1 { get; set; }
+
+        [Required]
+        public required string Field1 { get; set; }
         public string? Field2 { get; set; }
         public string? Field3 { get; set; }
         public string? Field4 { get; set; }

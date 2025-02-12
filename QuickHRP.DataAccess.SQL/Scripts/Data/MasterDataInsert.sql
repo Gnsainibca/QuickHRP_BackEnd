@@ -65,130 +65,147 @@ INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
 SELECT 'Purpose', 100
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 100);
 
+--To insert record in Master Type Table for Operation
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Operation', 105
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105);
+
 --To insert record in Master Type Table for Operation Category
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Operation Category', 110
+SELECT 'OperationCategory', 110
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 110);
 
 --To insert record in Master Type Table for Medicine Group
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Group', 120
+SELECT 'MedicineGroup', 120
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 120);
 
 --To insert record in Master Type Table for Medicine Company
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Company', 130
+SELECT 'MedicineCompany', 130
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 130);
 
 --To insert record in Master Type Table for Medicine Unit
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Unit', 140
+SELECT 'MedicineUnit', 140
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 140);
 
 --To insert record in Master Type Table for Doasage Duration
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Doasage Duration', 150
+SELECT 'MedicineDoasageDuration', 150
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 150);
 
 --To insert record in Master Type Table for Doasage Interval
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Doasage Interval', 160
+SELECT 'MedicineDoasageInterval', 160
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 160);
 
 --To insert record in Master Type Table for Medicine Category
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Medicine Category', 170
+SELECT 'MedicineCategory', 170
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 170);
 
 --To insert record in Master Type Table for Pathology Unit
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Pathology Unit', 180
+SELECT 'PathologyUnit', 180
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 180);
 
 --To insert record in Master Type Table for Pathology Category
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Pathology Category', 190
+SELECT 'PathologyCategory', 190
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 190);
 
 --To insert record in Master Type Table for Radiology Unit
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Radiology Unit', 200
+SELECT 'RadiologyUnit', 200
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 200);
 
 --To insert record in Master Type Table for Radiology Category
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Radiology Category', 210
+SELECT 'RadiologyCategory', 210
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 210);
 
 --To insert record in Master Type Table for Symptoms Type
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Symptoms Type', 220
+SELECT 'SymptomsType', 220
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220);
+
+--To insert record in Master Type Table for Symptoms Head
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'SymptomsHead', 225
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225);
 
 --To insert record in Master Type Table for Findings Category
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Findings Category', 230
+SELECT 'FindingsCategory', 230
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230);
+
+--To insert record in Master Type Table for Findings
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'Findings', 235
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235);
 
 --To insert record in Master Type Table for HR Contract Type
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'HR Contract Type', 240
+SELECT 'HRContractType', 240
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 240);
 
 --To insert record in Master Type Table for HR Specialist
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'HR Specialist', 250
+SELECT 'HRSpecialist', 250
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 250);
 
 --To insert record in Master Type Table for HR Designation
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'HR Designation', 260
+SELECT 'HRDesignation', 260
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 260);
 
 --To insert record in Master Type Table for HR Department
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'HR Department', 270
+SELECT 'HRDepartment', 270
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 270);
 
 --To insert record in Master Type Table for HR Leave Type
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'HR Leave Type', 280
+SELECT 'HRLeaveType', 280
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 280);
 
 --To insert record in Master Type Table for Appointment Status
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Appointment Status', 290
+SELECT 'AppointmentStatus', 290
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 290);
 
 --To insert record in Master Type Table for Appointment Source
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Appointment Source', 300
+SELECT 'AppointmentSource', 300
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 300);
 
 --To insert record in Master Type Table for HR Appointment Priority
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
-SELECT 'Appointment Priority', 310
+SELECT 'AppointmentPriority', 310
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 310);
 
 --To insert data into mster marital status table 
@@ -617,6 +634,78 @@ WHERE NOT EXISTS (
     WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 60)
       AND [Field1] = '4th Floor'
 );
+--To insert data into master bed group table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65),(SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '4th Floor'), 'Non AC', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'Non AC'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '1st Floor'), 'AC (Normal)', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'AC (Normal)'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '2nd Floor'), 'NICU', 'The NICU may be either the neurological intensive care unit or the neonatal intensive care unit, depending on whether the facility treats adults or children. In some facilities, the neurological ICU.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'NICU'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '2nd Floor'), 'ICU', 'The intensive care unit (ICU) is where you are sent if you require close monitoring. The ICU is also referred to as a critical care unit.2﻿ Nurses in the ICU typically have just one or two patients', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'ICU'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '3rd Floor'), 'General Ward Male', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'General Ward Male'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = '3rd Floor'), 'Private Ward', 'The operating room (OR) is where both inpatient and outpatient surgeries are performed.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'Private Ward'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Ground Floor'), 'VIP Ward', 'A palliative or hospice unit is where end-of-life care is provided if you have a life-limiting illness, which may or may not be cancer-related.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65)
+      AND [Field1] = 'VIP Ward'
+);
 
 --To insert data into master bed type table
 
@@ -800,6 +889,88 @@ WHERE NOT EXISTS (
     FROM [QuickHRP].[dbo].[MasterData]
     WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 100)
       AND [Field1] = 'Visit'
+);
+--To insert data into master operation table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Plastic Surgery'), 'Facelift Surgery', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Facelift Surgery'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'ENT and Oral Surgery'), 'Tooth extraction', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Tooth extraction'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'ENT and Oral Surgery'), 'Arthroscopic surgery including ACL repair', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Arthroscopic surgery including ACL repair'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Thoracic Surgery'), 'Bronchoscopy', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Bronchoscopy'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Ophthalmology'), 'Cataract extraction ophthalmological procedures', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Cataract extraction ophthalmological procedures'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Thoracic Surgery'), 'Coronary artery bypass', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Coronary artery bypass'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'ENT and Oral Surgery'), 'Dilation and curettage', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Dilation and curettage'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105), (SELECT ID FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Urology'), 'Hydrocele and varicocele excision', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 8  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 105)
+      AND [Field1] = 'Hydrocele and varicocele excision'
 );
 
 --To insert data into master operation category table
@@ -1690,6 +1861,80 @@ WHERE NOT EXISTS (
       AND [Field1] = 'Eating or weight problems'
 );
 
+--To insert data into master symptoms head table
+
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Eating or weight problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Thirst', 'Thirst is the feeling of needing to drink something. It occurs whenever the body is dehydrated for any reason. Any condition that can result in a loss of body water can lead to thirst or excessive thirst.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Thirst'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Emotional problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Feeling sad or down', 'Personality change in a way that seems different for that person.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Feeling sad or down'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Muscle or joint problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Cramps and injuries', 'Muscle pain: Muscle spasms, cramps and injuries can all cause muscle pain. Some infections or tumors may also lead to muscle pain. Tendon and ligament pain: Ligaments and tendons are strong bands of tissue that connect your joints and bones. Sprains, strains and overuse injuries can lead to tendon or ligament pain.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Cramps and injuries'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Skin problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Atopic dermatitis (Eczema)', 'Atopic dermatitis usually develops in early childhood and is more common in people who have a family history of the condition.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Atopic dermatitis (Eczema)'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Bladder problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Bladder leakage', 'Urinary incontinence — the loss of bladder control — is a common and often embarrassing problem. The severity ranges from occasionally leaking urine when you cough or sneeze to having an urge to urinate that so sudden and strong you do not get to a toilet in time.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Bladder leakage'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Stomach problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Constant or severe abdominal pain', 'Diseases that affect the digestive system can also cause chronic abdominal pain. The most common are: gastroesophageal reflux disease (GERD) irritable bowel syndrome or spastic colon (a disorder that causes abdominal pain, cramping, and changes in bowel movements)', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Constant or severe abdominal pain'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Lung problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Asthma', 'Asthma is a condition in which your airways narrow and swell and may produce extra mucus. This can make breathing difficult and trigger coughing, a whistling sound (wheezing) when you breathe out and shortness of breath. For some people, asthma is a minor nuisance.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225)
+      AND [Field1] = 'Asthma'
+);
+
+
 --To insert data into master findings category table
 
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
@@ -1762,6 +2007,19 @@ WHERE NOT EXISTS (
     WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)
       AND [Field1] = 'Fever'
 );
+
+----To insert data into master Findings
+
+--INSERT INTO [QuickHRP].[dbo].[MasterData] 
+--([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+--[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+--SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 240), null, 'Probation', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+--WHERE NOT EXISTS (
+--    SELECT 1 
+--    FROM [QuickHRP].[dbo].[MasterData]
+--    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 240)
+--      AND [Field1] = 'Probation'
+--);
 
 --To insert data into master HR contract type
 

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using QuickHRP.Entities;
 using QuickHRP.Entities.Hospital;
 using QuickHRP.Entities.Master;
 
 namespace QuickHRP.DataAccess.SQL
 {
-    public class QuickHRPDbContext : DbContext
+    public class QuickHRPDbContext : IdentityDbContext
     {
         public QuickHRPDbContext(DbContextOptions<QuickHRPDbContext> options) : base(options)
         {

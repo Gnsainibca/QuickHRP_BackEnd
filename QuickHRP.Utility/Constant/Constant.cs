@@ -17,5 +17,20 @@
                 public const string Status = "@status";
             }
         }
+
+        public static class Error {
+            public const string InvalidInputData = "Sorry, the request contains invalid data. Please revise.";
+        }
+
+        /// <summary>
+        /// logging messages
+        /// </summary>
+        public static class LoggingMessages
+        {
+            public const string OperationStarted = " - Starting Operation ";
+            public const string OperationCompleted = " - Completed Operation ";
+            public const string OperationFailed = " - Failed Operation ";
+            public const string ExceptionOccured = "- Exception Occured ";
+        }
     }
 }

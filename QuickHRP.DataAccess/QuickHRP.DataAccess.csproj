@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuickHRP.Core\QuickHRP.Core.csproj" />
     <ProjectReference Include="..\QuickHRP.DataAccess.SQL\QuickHRP.DataAccess.SQL.csproj" />
   </ItemGroup>
 

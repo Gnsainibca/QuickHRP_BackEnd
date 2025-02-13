@@ -15,5 +15,6 @@ namespace QuickHRP.DataAccess.SQL
         public DbSet<MasterData> MasterData { get; set; }
         public DbSet<MasterType> MasterType { get; set; }
         public DbSet<HospitalRegistration> HospitalRegistration { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

@@ -1,20 +1,22 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using QuickHRP.Core.Permission.Constants;
+using QuickHRP.Entities;
 
 namespace QuickHRP.Core.Permission.Seeds
 {
     public static class DefaultUsers
     {
-        public static async Task SeedAdminUserAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAdminUserAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User
-            var defaultUser = new IdentityUser
+            var defaultUser = new User
             {
                 UserName = PermissionConstant.AdminUserDefaultEmail,
                 Email = PermissionConstant.AdminUserDefaultEmail,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
+                IsActive = true
             };
             if (userManager.Users.All(u => u.Id != defaultUser.Id))
             {
@@ -28,15 +30,16 @@ namespace QuickHRP.Core.Permission.Seeds
             }
         }
 
-        public static async Task SeedSuperAdminUserAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedSuperAdminUserAsync(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User
-            var defaultUser = new IdentityUser
+            var defaultUser = new User
             {
                 UserName = PermissionConstant.SuperAdminUserDefaultEmail,
                 Email = PermissionConstant.SuperAdminUserDefaultEmail,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
+                IsActive = true
             };
             if (userManager.Users.All(u => u.Id != defaultUser.Id))
             {

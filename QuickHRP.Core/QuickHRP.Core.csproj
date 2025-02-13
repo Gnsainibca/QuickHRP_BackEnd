@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuickHRP.Entities\QuickHRP.Entities.csproj" />
     <ProjectReference Include="..\QuickHRP.MessageCore\QuickHRP.MessageCore.csproj" />
   </ItemGroup>
 

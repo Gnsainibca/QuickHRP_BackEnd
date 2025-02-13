@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QuickHRP.Core.Permission.Models;
+using QuickHRP.Entities;
 
 namespace QuickHRP.API.Controllers
 {
     [Authorize(Roles = "SuperAdmin")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserRolesController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager) : ControllerBase
+    public class UserRolesController(UserManager<User> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager) : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager = signInManager;
-        private readonly UserManager<IdentityUser> _userManager = userManager;
+        private readonly UserManager<User> _userManager = userManager;
         private readonly RoleManager<IdentityRole> _roleManager = roleManager;
 
         [HttpGet(Name = "UserRoles")]

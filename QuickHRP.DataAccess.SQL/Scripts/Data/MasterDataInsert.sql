@@ -41,6 +41,12 @@ INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
 SELECT 'Floor', 60
 WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 60);
 
+--To insert record in Master Type Table for BedGroup
+
+INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
+SELECT 'BedGroup', 65
+WHERE NOT EXISTS (SELECT 1 FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 65);
+
 --To insert record in Master Type Table for BedType
 
 INSERT INTO [QuickHRP].[dbo].[MasterType] ([Name], [BusinessKey])
@@ -1866,7 +1872,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Eating or weight problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Thirst', 'Thirst is the feeling of needing to drink something. It occurs whenever the body is dehydrated for any reason. Any condition that can result in a loss of body water can lead to thirst or excessive thirst.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Eating or weight problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Thirst', 'Thirst is the feeling of needing to drink something. It occurs whenever the body is dehydrated for any reason. Any condition that can result in a loss of body water can lead to thirst or excessive thirst.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1876,7 +1882,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Emotional problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Feeling sad or down', 'Personality change in a way that seems different for that person.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Emotional problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Feeling sad or down', 'Personality change in a way that seems different for that person.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1886,7 +1892,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Muscle or joint problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Cramps and injuries', 'Muscle pain: Muscle spasms, cramps and injuries can all cause muscle pain. Some infections or tumors may also lead to muscle pain. Tendon and ligament pain: Ligaments and tendons are strong bands of tissue that connect your joints and bones. Sprains, strains and overuse injuries can lead to tendon or ligament pain.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Muscle or joint problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Cramps and injuries', 'Muscle pain: Muscle spasms, cramps and injuries can all cause muscle pain. Some infections or tumors may also lead to muscle pain. Tendon and ligament pain: Ligaments and tendons are strong bands of tissue that connect your joints and bones. Sprains, strains and overuse injuries can lead to tendon or ligament pain.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1896,7 +1902,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Skin problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Atopic dermatitis (Eczema)', 'Atopic dermatitis usually develops in early childhood and is more common in people who have a family history of the condition.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Skin problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Atopic dermatitis (Eczema)', 'Atopic dermatitis usually develops in early childhood and is more common in people who have a family history of the condition.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4   
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1906,7 +1912,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Bladder problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Bladder leakage', 'Urinary incontinence — the loss of bladder control — is a common and often embarrassing problem. The severity ranges from occasionally leaking urine when you cough or sneeze to having an urge to urinate that so sudden and strong you do not get to a toilet in time.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5 
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Bladder problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Bladder leakage', 'Urinary incontinence — the loss of bladder control — is a common and often embarrassing problem. The severity ranges from occasionally leaking urine when you cough or sneeze to having an urge to urinate that so sudden and strong you do not get to a toilet in time.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5 
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1916,7 +1922,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Stomach problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Constant or severe abdominal pain', 'Diseases that affect the digestive system can also cause chronic abdominal pain. The most common are: gastroesophageal reflux disease (GERD) irritable bowel syndrome or spastic colon (a disorder that causes abdominal pain, cramping, and changes in bowel movements)', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Stomach problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Constant or severe abdominal pain', 'Diseases that affect the digestive system can also cause chronic abdominal pain. The most common are: gastroesophageal reflux disease (GERD) irritable bowel syndrome or spastic colon (a disorder that causes abdominal pain, cramping, and changes in bowel movements)', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -1926,7 +1932,7 @@ WHERE NOT EXISTS (
 INSERT INTO [QuickHRP].[dbo].[MasterData] 
 ([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
 [CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
-SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT * FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Lung problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Asthma', 'Asthma is a condition in which your airways narrow and swell and may produce extra mucus. This can make breathing difficult and trigger coughing, a whistling sound (wheezing) when you breathe out and shortness of breath. For some people, asthma is a minor nuisance.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 225), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Lung problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 220)), 'Asthma', 'Asthma is a condition in which your airways narrow and swell and may produce extra mucus. This can make breathing difficult and trigger coughing, a whistling sound (wheezing) when you breathe out and shortness of breath. For some people, asthma is a minor nuisance.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
 WHERE NOT EXISTS (
     SELECT 1 
     FROM [QuickHRP].[dbo].[MasterData]
@@ -2008,18 +2014,118 @@ WHERE NOT EXISTS (
       AND [Field1] = 'Fever'
 );
 
-----To insert data into master Findings
+--To insert data into master Findings
 
---INSERT INTO [QuickHRP].[dbo].[MasterData] 
---([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
---[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
---SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 240), null, 'Probation', null, (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
---WHERE NOT EXISTS (
---    SELECT 1 
---    FROM [QuickHRP].[dbo].[MasterData]
---    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 240)
---      AND [Field1] = 'Probation'
---);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Typhidot (or Widal Test)' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Stomach pain', 'Typhoid fever and paratyphoid fever have similar symptoms̵. People usually have a sustained fever (one that doesn’t come and go) that can be as high as 103–104°F (39–40°C).', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 1   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Stomach pain'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Typhidot (or Widal Test)' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Diarrhea or constipation', 'Some people with typhoid fever or paratyphoid fever develop a rash of flat, rose-colored spots.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 2   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Diarrhea or constipation'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Typhidot (or Widal Test)' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Headache', 'Typhoid fever and paratyphoid fever are treated with antibiotics.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 3   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Headache'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Fever' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Elevated temperature (above 100.4°)', 'The medical community generally defines a fever as a body temperature above 100.4 degrees Fahrenheit. A body temp between 100.4 and 102.2 degree is usually considered a low-grade fever.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 4  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Elevated temperature (above 100.4°)'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Fever' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Flushed complexion or hot skin', 'Flushed skin is often a visual sign of embarrassment, anxiety, or being too hot. However, frequent flushing can sometimes indicate an underlying medical condition. Flushed skin occurs when the hundreds of tiny blood vessels just beneath the skin dilate, or widen.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 5   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Flushed complexion or hot skin'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Fever' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Hyperhidrosis disorder', 'Hyperhidrosis disorder is a condition that results in excessive sweating. This sweating can occur in unusual situations, such as in cooler weather, or without any trigger at all. It can also be caused by other medical conditions, such as menopause or hyperthyroidism. Hyperhidrosis can be uncomfortable.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 6   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Hyperhidrosis disorder'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Skin Problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Rosacea', 'Rosacea (roe-ZAY-she-uh) is a common skin condition that causes blushing or flushing and visible blood vessels in your face. It may also produce small, pus-filled bumps. These signs and symptoms may flare up for weeks to months and then go away for a while.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 7  
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Rosacea'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Skin Problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Eczema', 'Eczema (atopic dermatitis) is caused by a combination of immune system activation, genetics, environmental triggers and stress. Your immune system. If you have eczema, your immune system overreacts to small irritants or allergens. This overreaction can inflame your skin.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 8   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Eczema'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Bone Density Problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Osteoporosis', 'Bone density problems may occur because the body loses too much bone tissue, makes too little of it, or some combination of both. It tends to be symptomless. That is, people with osteoporosis tend not to know they have it – until a bone fracture has them visiting a doctor who makes the diagnosis.', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 9   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Osteoporosis'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Hair Problems' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Damaged Hair', 'Hair damage is more than just split ends. Extremely damaged hair develops cracks in the outside layer (cuticle). Once the cuticle lifts (opens), your hair is at risk for further damage and breakage. It may also look dull or frizzy and be difficult to manage', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 10   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Damaged Hair'
+);
+INSERT INTO [QuickHRP].[dbo].[MasterData] 
+([TypeId], [ParentId1], [Field1], [Field2], [HospitalId], 
+[CreatedBy], [CreatedOn], [ModifiedBy], [ModifiedOn], [Inactive], [IsDeleted], [OrderNumber])
+SELECT (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235), (SELECT Id FROM [QuickHRP].[dbo].MasterData WHERE Field1 = 'Eye Diseases' and TypeId = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 230)), 'Refractive Errors', 'A refractive error is a very common eye disorder. It occurs when the eye cannot clearly focus the images from the outside world. The result of refractive errors is blurred vision, which is sometimes so severe that it causes visual impairment', (SELECT ID FROM [dbo].[HospitalRegistration] WHERE [Code] = 'QuickHRP1001'),1, GETDATE(), NULL, NULL, 0, 0, 11   
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [QuickHRP].[dbo].[MasterData]
+    WHERE [TypeId] = (SELECT ID FROM [QuickHRP].[dbo].[MasterType] WHERE [BusinessKey] = 235)
+      AND [Field1] = 'Refractive Errors'
+);
 
 --To insert data into master HR contract type
 

@@ -10,7 +10,8 @@ namespace QuickHRP.API.Controllers
     {
         private readonly IAuthService _authService = authService;
 
-        [HttpPost(Name = "Login")]
+        [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel loginViewModel)
         {
             var result = await _authService.UserLogin(loginViewModel.UserName, loginViewModel.Password);

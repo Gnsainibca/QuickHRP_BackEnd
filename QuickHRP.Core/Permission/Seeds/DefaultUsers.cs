@@ -47,10 +47,7 @@ namespace QuickHRP.Core.Permission.Seeds
                 if (user == null)
                 {
                     await userManager.CreateAsync(defaultUser, PermissionConstant.DefaultPassword);
-                    foreach (var role in Enum.GetNames(typeof(Role)))
-                    {
-                        await userManager.AddToRoleAsync(defaultUser, role);
-                    }
+                    await userManager.AddToRoleAsync(defaultUser, Role.SuperAdmin.ToString());
                 }
                 await roleManager.SeedClaimsForSuperAdmin();
             }

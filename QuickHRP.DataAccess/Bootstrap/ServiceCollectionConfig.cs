@@ -8,6 +8,7 @@ using QuickHRP.DataAccess.SQL.Bootstrap;
 using QuickHRP.DataAccess.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using QuickHRP.Entities;
+using static QuickHRP.Utility.Constant.Key;
 
 namespace QuickHRP.DataAccess.Bootstrap
 {
@@ -22,9 +23,10 @@ namespace QuickHRP.DataAccess.Bootstrap
 
         private static void SeedData(this IServiceCollection serviceCollection)
         {
-            var services = serviceCollection.BuildServiceProvider();
-            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            using var scope = serviceCollection.BuildServiceProvider().CreateScope();
+            var services = scope.ServiceProvider;
             var userManager = services.GetRequiredService<UserManager<User>>();
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
             DefaultRoles.SeedAsync(roleManager).Wait();
             DefaultUsers.SeedAdminUserAsync(userManager, roleManager).Wait();
             DefaultUsers.SeedSuperAdminUserAsync(userManager, roleManager).Wait();

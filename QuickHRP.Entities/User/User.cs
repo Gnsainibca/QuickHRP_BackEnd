@@ -9,7 +9,6 @@ namespace QuickHRP.Entities
     {
         [Required]
         public string Name { get; set; }
-        public override string UserName { get; set; }
         [MaxLength(10)]
         public string Language { get; set; }
         public bool IsActive { get; set; }

@@ -1,11 +1,13 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using QuickHRP.BusinessService.Bootstrap;
-using QuickHRP.Core.Permission.Models;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc;
-using QuickHRP.API.ModelBinder;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using QuickHRP.API.ModelBinder;
+using QuickHRP.BusinessService.Bootstrap;
+using QuickHRP.Core.Permission.AuthUtils.PolicyProvider;
+using QuickHRP.Core.Permission.Models;
 
 namespace QuickHRP.API.Bootstrap
 {
@@ -42,7 +44,7 @@ namespace QuickHRP.API.Bootstrap
                          Id = "Bearer"
                        }
                       },
-                      new string[] { }
+                      Array.Empty<string>()
                     }
                   });
             });
@@ -51,37 +53,15 @@ namespace QuickHRP.API.Bootstrap
 
         private static void AddAuthorization(this IServiceCollection serviceCollection)
         {
-            // api user claim policy
-            serviceCollection.AddAuthorization(options =>
-            {
-                //options.AddPolicy(Constants.Policy.Dealer,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.Dealer));
-                //options.AddPolicy(Constants.Policy.SubDealer,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.SubDealer));
-                //options.AddPolicy(Constants.Policy.Admin,
-                //   policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.Admin));
-                //options.AddPolicy(Constants.Policy.Sfdc,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.Sfdc));
-                //options.AddPolicy(Constants.Policy.SAP,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.SAP));
-                //options.AddPolicy(Constants.Policy.Yalochat,
-                //   policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role, Constants.Role.Yalochat));
-                //options.AddPolicy(Constants.Policy.DealerAndSubDealer,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role
-                //        , Constants.Role.Dealer
-                //        , Constants.Role.SubDealer));
+            //// api user claim policy
+            //serviceCollection.AddAuthorizationBuilder()
+            //                 .AddPolicy("Appointment_Delete", policy => policy.RequireClaim("Permission", "Permissions.Appointment.View"));
 
-                //options.AddPolicy(Constants.Policy.SfdcAndSap,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role
-                //        , Constants.Role.Sfdc
-                //        , Constants.Role.SAP));
+            // Register our custom Authorization handler
+            serviceCollection.AddSingleton<IAuthorizationHandler, PermissionHandler>();
 
-                //options.AddPolicy(Constants.Policy.SfdcAndDealerAndSubDealer,
-                //    policy => policy.RequireClaim(Constants.JwtClaimIdentifiers.Role
-                //        , Constants.Role.Sfdc
-                //        , Constants.Role.SubDealer
-                //        , Constants.Role.Dealer));
-            });
+            // Overrides the DefaultAuthorizationPolicyProvider with our own
+            serviceCollection.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
         }
 
         /// <summary>
@@ -94,7 +74,7 @@ namespace QuickHRP.API.Bootstrap
             services.AddSingleton<IModelBindingErrorHandler, ModelBindingErrorHandler>();
 
             var serviceProvider = services.BuildServiceProvider();
-            var handler = serviceProvider.GetService<IModelBindingErrorHandler>();
+            var handler = serviceProvider.GetService<IModelBindingErrorHandler>()!;
             services.PostConfigure((ApiBehaviorOptions options) =>
                 options.InvalidModelStateResponseFactory = handler.HandleInvalidModelState);
 
@@ -103,15 +83,15 @@ namespace QuickHRP.API.Bootstrap
 
         private static void AddAuthentication(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
-            string? secretKey = configuration["Keys:SecretKey"];
-            SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+            string secretKey = configuration["Keys:SecretKey"]!;
+            SymmetricSecurityKey _signingKey = new(Encoding.ASCII.GetBytes(secretKey));
             var jwtAppSettingOptions = configuration.GetSection(nameof(JwtIssuerOptions));
 
             // Configure JwtIssuerOptions
             serviceCollection.Configure<JwtIssuerOptions>(options =>
             {
-                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
+                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)]!;
+                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)]!;
                 options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
             });
 
@@ -147,7 +127,7 @@ namespace QuickHRP.API.Bootstrap
                     {
                         if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
                         {
-                            context.Response.Headers.Add("Token-Expired", "true");
+                            context.Response.Headers.Append("Token-Expired", "true");
                         }
                         return Task.CompletedTask;
                     }

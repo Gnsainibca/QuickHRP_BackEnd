@@ -12,7 +12,7 @@ using QuickHRP.DataAccess.SQL;
 namespace QuickHRP.DataAccess.SQL.Migrations
 {
     [DbContext(typeof(QuickHRPDbContext))]
-    [Migration("20250213121654_initial")]
+    [Migration("20250217093859_initial")]
     partial class initial
     {
         /// <inheritdoc />

@@ -25,8 +25,8 @@ namespace QuickHRP.Core.Permission.Seeds
                 {
                     await userManager.CreateAsync(defaultUser, PermissionConstant.DefaultPassword);
                     await userManager.AddToRoleAsync(defaultUser, Role.Admin.ToString());
+                    await roleManager.SeedClaimsForAdmin();
                 }
-                await roleManager.SeedClaimsForAdmin();
             }
         }
 
@@ -48,8 +48,8 @@ namespace QuickHRP.Core.Permission.Seeds
                 {
                     await userManager.CreateAsync(defaultUser, PermissionConstant.DefaultPassword);
                     await userManager.AddToRoleAsync(defaultUser, Role.SuperAdmin.ToString());
+                    await roleManager.SeedClaimsForSuperAdmin();
                 }
-                await roleManager.SeedClaimsForSuperAdmin();
             }
         }
 

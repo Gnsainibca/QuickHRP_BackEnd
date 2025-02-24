@@ -17,6 +17,7 @@ namespace QuickHRP.BusinessService.Bootstrap
         private static void AddDependency(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IMasterService, MasterService>();
+            serviceCollection.AddScoped<IHospitalService, HospitalService>();
             serviceCollection.AddScoped<IJwtService, JwtService>();
             serviceCollection.AddScoped<ITokenService, TokenService>();
             serviceCollection.AddScoped<IUserService, UserService>();

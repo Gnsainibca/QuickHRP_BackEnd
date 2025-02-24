@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using QuickHRP.BusinessService.Contract;
+using QuickHRP.Core.Service;
 using QuickHRP.Entities;
+using QuickHRP.MessageCore;
+using QuickHRP.MessageCore.Models;
 using QuickHRP.Utility.Extensions;
 
 namespace QuickHRP.BusinessService.Service
@@ -13,6 +16,17 @@ namespace QuickHRP.BusinessService.Service
         private readonly ILogger<UserService> _logger = logger;
         private readonly UserManager<User> _userManager = userManager;
         private readonly RoleManager<IdentityRole> _roleManager = roleManager;
+
+        public async Task<ServiceResponseOf<List<UserViewModel>>> List()
+        {
+            var users = _userManager.Users.Select(c => new UserViewModel()
+            {
+                Id = c.Id,
+                UserName = c.UserName,
+                Role = string.Join(",", _userManager.GetRolesAsync(c).Result.ToArray())
+            }).ToListAsync();
+            return await ResponseHelpers.GetServiceResponseAsync(() => users, "Failed to get client activity");
+        }
 
         public async Task<User?> GetUser(string userName)
         {

@@ -19,6 +19,7 @@ namespace QuickHRP.DataAccess.Bootstrap
         private static void AddDependency(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IMasterDataService, MasterDataService>();
+            serviceCollection.AddScoped<IHospitalDataService, HospitalDataService>();
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             serviceCollection.AddScoped<IDatabaseUnitOfWork, DatabaseUnitOfWork>();
         }

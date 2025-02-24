@@ -4,11 +4,11 @@
     {
         public long Id { get; set; }
 
-        public required int HospitalId { get; set; } = 1;
+        public required int HospitalId { get; set; }
 
-        public required int CreatedBy { get; set; } = 1;
+        public required int CreatedBy { get; set; }
 
-        public required DateTime CreatedOn { get; set; } = DateTime.Now;
+        public required DateTime CreatedOn { get; set; }
 
         public int? ModifiedBy { get; set; }
 
